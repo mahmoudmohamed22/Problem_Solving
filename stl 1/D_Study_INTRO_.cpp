@@ -3,33 +3,22 @@ using namespace std;
 int main() {
     int n;
     stack<string>st;
-    stack<string>st2;
+   
     string s;
    bool b=false;
    cin>>n;
-   int nn=n;
-   cin>>s;
-   st2.push(s);
-   n--;
+   
+  
     while (n--)
     {
         cin>>s;
-        if(n==0)
-        {   if(!st2.empty() && s=="EndHeader"){
-            st2.pop();
-            continue;
-            }else 
-            {
-                cout<<"WA";
-                return 0;
-            }
-        }
-        if(s=="Header" || s=="Cell" || s=="Row" || s=="Table")
+       
+        if(s=="Header" || s=="Cell" || s=="Row" || s=="Table" || s=="EndHeader" )
         {
             st.push(s);
          }else
          {
-             if( (s=="EndTable" && st.top()=="Table") ||  (s=="EndHeader" && st.top()=="Header") ||  (s=="EndCell" && st.top()=="Cell")  || (s=="EndRow" && st.top()=="Row")        )
+             if( (s=="EndTable" && st.top()=="Table") || (s=="EndCell" && st.top()=="Cell")  || (s=="EndRow" && st.top()=="Row")        )
              {
                  if(!st.empty())
                  {    
@@ -48,11 +37,21 @@ int main() {
          
         
     }
+       
+       
+    
+        if(st.size()==2)
+        { 
+            if(st.top()=="EndHeader"){
+                st.pop();
+                if(st.top()!="Header"){
+                 cout<<"WA"<<"\n";
+                    }
 
-    
-    
-        if(st.size()==0 && st2.size()==0)
-        {
+            }else
+            {
+                cout<<"WA"<<"\n";
+            }
             cout<<"ACC\n";
         }else
         {
