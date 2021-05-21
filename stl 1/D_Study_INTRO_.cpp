@@ -46,11 +46,13 @@ int main() {
                 st.pop();
                 if(st.top()!="Header"){
                  cout<<"WA"<<"\n";
+                 return 0;
                     }
 
             }else
             {
                 cout<<"WA"<<"\n";
+                 return 0;
             }
             cout<<"ACC\n";
         }else
